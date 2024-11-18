@@ -1,0 +1,22 @@
+{
+	"name": "-2-js-multitool-j-",
+	"version": "1.0.0",
+	"dependencies": {
+		"css-loader": "^7.1.2",
+		"mini-css-extract-plugin": "^2.9.1",
+		"sass": "^1.78.0",
+		"sass-loader": "^16.0.1",
+		"scss": "^0.2.4",
+		"webpack": "^5.94.0"
+	},
+	"main": "webpack.config.js",
+	"scripts": {
+		"build": "webpack",
+		"watch": "webpack --watch"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"webpack-cli": "^5.1.4"
+	}
+}

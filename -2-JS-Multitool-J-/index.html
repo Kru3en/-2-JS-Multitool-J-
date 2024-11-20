@@ -7,30 +7,106 @@
 		<title></title>
 	</head>
 	<body>
-		<main>
-			<h1>CALCUALTOR</h1>
-			<div class="contCalculator">
-				<div class="calculator">
-					<input type="text" class="calculatorDisplay" />
-					<button class="calculatorButton">&lt;</button>
-					<button class="calculatorButton">7</button>
-					<button class="calculatorButton">8</button>
-					<button class="calculatorButton">9</button>
-					<button class="calculatorButton">*</button>
-					<button class="calculatorButton">4</button>
-					<button class="calculatorButton">5</button>
-					<button class="calculatorButton">6</button>
-					<button class="calculatorButton">/</button>
-					<button class="calculatorButton">1</button>
-					<button class="calculatorButton">2</button>
-					<button class="calculatorButton">3</button>
-					<button class="calculatorButton">+</button>
-					<button class="calculatorButton calculatorButtonClear">C</button>
-					<button class="calculatorButton">0</button>
-					<button class="calculatorButton">=</button>
-					<button class="calculatorButton">-</button>
-			</div>
-		</main>
+		<div class="container">
+			<header>
+				<div class="cycle">
+					<span id="cycle-number">#1</span>
+				</div>
+				<h1>Pomodoro Timer</h1>
+			</header>
+			<main>
+				<div class="status">
+					<h2 id="status-text">Рабочее время</h2>
+				</div>
+				<div class="timer">
+					<span id="minutes">25</span>:<span id="seconds">00</span>
+				</div>
+				<div class="controls">
+					<button id="start">Start</button>
+					<button id="pause">Pause</button>
+					<button id="reset">Reset</button>
+					<button id="skip">Skip</button>
+				</div>
+				<div class="settings">
+					<button id="settings-button">⚙️ Настройки</button>
+					<div id="settings-modal" class="modal">
+						<div class="modal-content">
+							<h3>Настройки Pomodoro</h3>
+							<label>
+								Рабочее время:
+								<input
+									type="number"
+									id="work-hours"
+									value="0"
+									min="0"
+									placeholder="Часы"
+								/>
+								<input
+									type="number"
+									id="work-minutes"
+									value="25"
+									min="0"
+									max="59"
+									placeholder="Минуты"
+								/>
+								<input
+									type="number"
+									id="work-seconds"
+									value="0"
+									min="0"
+									max="59"
+									placeholder="Секунды"
+								/>
+							</label>
+							<label>
+								Время отдыха:
+								<input
+									type="number"
+									id="break-hours"
+									value="0"
+									min="0"
+									placeholder="Часы"
+								/>
+								<input
+									type="number"
+									id="break-minutes"
+									value="5"
+									min="0"
+									max="59"
+									placeholder="Минуты"
+								/>
+								<input
+									type="number"
+									id="break-seconds"
+									value="0"
+									min="0"
+									max="59"
+									placeholder="Секунды"
+								/>
+							</label>
+							<div class="auto-start">
+								<label>
+									<input type="checkbox" id="auto-start-toggle" />
+									<span class="switch"></span>
+								</label>
+								<span>Автостарт</span>
+							</div>
+							<button id="save-settings">Сохранить</button>
+							<button id="close-settings">Закрыть</button>
+						</div>
+					</div>
+				</div>
+				<div id="alarm-modal" class="modal">
+					<div class="modal-content">
+						<h3>Время вышло!</h3>
+						<button id="alarm-confirm">ОК</button>
+					</div>
+				</div>
+			</main>
+			<footer>
+				<p>Boost your productivity with Pomodoro!</p>
+			</footer>
+		</div>
 	</body>
 	<script src="./dist/bundle.js"></script>
 </html>

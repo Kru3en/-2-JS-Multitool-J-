@@ -1,2 +1,2 @@
 import '../scss/style.scss'
-import './calculator.js'
+import './dateTiming.js'

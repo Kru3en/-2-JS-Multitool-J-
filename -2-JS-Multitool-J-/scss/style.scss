@@ -1,135 +1,224 @@
-$primary-color: #2e2e2e;
-$secondary-color: #6b6b6b;
-$accent-color: #c0a16b;
-$danger-color: #a52a2a;
-$success-color: #3a6b35;
-$font-family: 'Arial', sans-serif;
+:root {
+	--background-color: #121212;
+	--primary-color: #bb86fc;
+	--secondary-color: #1e1e1e;
+	--text-color: #e0e0e0;
+	--placeholder-color: #888;
+	--scrollbar-color: #bb86fc;
+	--scrollbar-thumb-color: #9a6cd0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 body {
-	font-family: $font-family;
-	text-align: center;
-	background-color: $primary-color;
-	color: #fff;
+	font-family: Arial, sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
 }
-.contLabirint {
-	#controls {
+
+.weatherApp {
+	max-width: 600px;
+	margin: 50px auto;
+	text-align: center;
+	background-color: var(--secondary-color);
+	padding: 20px;
+	border-radius: 10px;
+
+	h1 {
+		color: var(--primary-color);
 		margin-bottom: 20px;
-
-		button {
-			margin: 0 5px;
-			background-color: $secondary-color;
-			color: #fff;
-			border: none;
-			padding: 10px 15px;
-			cursor: pointer;
-
-			&:hover {
-				background-color: darken($secondary-color, 10%);
-			}
-		}
-
-		#levelDisplay {
-			margin-left: 20px;
-			font-weight: bold;
-			color: $accent-color;
-		}
 	}
 
-	#gameContainer {
-		display: inline-block;
-		border: 2px solid $secondary-color;
-		margin-top: 20px;
-	}
-
-	.row {
+	.currentWeather {
 		display: flex;
-	}
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 30px;
 
-	.cell {
-		width: 30px;
-		height: 30px;
-		border: 1px solid darken($secondary-color, 20%);
-		background-color: lighten($primary-color, 5%);
-
-		&.wall {
-			background-color: $danger-color;
+		.location {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 10px;
 		}
 
-		&.player {
-			background-color: $accent-color;
-			font-size: 24px;
-			line-height: 30px;
-			text-align: center;
-		}
+		.currentWeatherInfo {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
-		&.finish {
-			background-color: $success-color;
-		}
-	}
-
-	.modal {
-		display: none;
-		position: fixed;
-		z-index: 1;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		overflow: auto;
-		background-color: rgba(46, 46, 46, 0.9);
-
-		.modalContent {
-			background-color: $secondary-color;
-			margin: 15% auto;
-			padding: 20px;
-			border: 1px solid $accent-color;
-			width: 300px;
-			color: #fff;
-
-			h2 {
-				color: $accent-color;
+			.temperature {
+				font-size: 3em;
+				margin: 10px 0;
 			}
 
-			label {
-				display: inline-block;
-				width: 120px;
-				text-align: right;
+			.description {
+				font-size: 1.2em;
+				font-style: italic;
+				margin-bottom: 10px;
+			}
+
+			.emoji {
+				font-size: 4em;
+			}
+		}
+	}
+
+	h2 {
+		margin-top: 20px;
+		margin-bottom: 10px;
+		color: var(--primary-color);
+	}
+
+	.todayForecast {
+		margin-top: 20px;
+
+		.hourlyForecast {
+			display: flex;
+			overflow-x: auto;
+			padding-bottom: 10px;
+
+			&::-webkit-scrollbar {
+				height: 8px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background-color: var(--scrollbar-color);
+				border-radius: 4px;
+			}
+
+			.timeSlot {
+				background-color: var(--secondary-color);
+				padding: 10px;
 				margin-right: 10px;
-			}
+				border-radius: 5px;
+				min-width: 50px;
+				max-width: 70px;
+				flex: 0 0 auto;
+				text-align: center;
 
-			input {
-				width: 50px;
-				background-color: lighten($primary-color, 10%);
-				border: 1px solid $secondary-color;
-				color: #fff;
-				padding: 5px;
-			}
+				p {
+					margin: 5px 0;
+					font-size: 0.5em;
+				}
 
-			#saveSettings {
-				background-color: $accent-color;
-				color: #fff;
-				border: none;
-				padding: 10px 15px;
-				cursor: pointer;
-				margin-top: 10px;
-
-				&:hover {
-					background-color: darken($accent-color, 10%);
+				.emoji {
+					font-size: 1em;
 				}
 			}
 		}
+	}
 
-		.close {
-			color: #fff;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
+	.forecast {
+		display: flex;
+		overflow-x: auto;
+		padding-bottom: 10px;
+		justify-content: center;
+		&::-webkit-scrollbar {
+			height: 8px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--scrollbar-color);
+			border-radius: 4px;
+		}
+
+		.forecastItem {
+			background-color: var(--secondary-color);
+			padding: 10px;
+			margin-right: 10px;
+			border-radius: 5px;
+			min-width: 80px;
+			max-width: 100px;
+			flex: 0 0 auto;
+			text-align: center;
+
+			h3 {
+				margin-bottom: 5px;
+				font-size: 0.5em;
+				color: var(--primary-color);
+			}
+
+			.emoji {
+				font-size: 1em;
+				margin-bottom: 5px;
+			}
+
+			p {
+				margin: 3px 0;
+				font-size: 0.5em;
+			}
+		}
+	}
+
+	.controls {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 20px;
+
+		#cityInput {
+			flex: 1;
+			padding: 10px;
+			border: 1px solid var(--primary-color);
+			background-color: var(--secondary-color);
+			color: var(--text-color);
+			border-radius: 5px;
+			max-width: 200px;
+
+			&::placeholder {
+				color: var(--placeholder-color);
+			}
+		}
+
+		button {
+			padding: 10px 15px;
+			background-color: var(--primary-color);
+			color: var(--secondary-color);
+			border: none;
+			border-radius: 5px;
 			cursor: pointer;
 
-			&:hover,
+			&:hover {
+				background-color: var(--scrollbar-thumb-color);
+			}
+
 			&:focus {
-				color: $accent-color;
-				text-decoration: none;
+				outline: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.weatherApp {
+		.currentWeather {
+			.temperature {
+				font-size: 2.5em;
+			}
+		}
+
+		.forecastItem,
+		.todayForecast .timeSlot {
+			min-width: 70px;
+			padding: 8px;
+
+			h3,
+			p:first-child {
+				font-size: 0.8em;
+			}
+
+			.emoji {
+				font-size: 1.2em;
+			}
+
+			p {
+				font-size: 0.8em;
 			}
 		}
 	}

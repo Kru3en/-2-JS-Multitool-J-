@@ -7,35 +7,32 @@
 		<title></title>
 	</head>
 	<body>
-		<main class="contLabirint">
-			<h1>Лабиринт</h1>
-
-			<div id="controls">
-				<button id="startButton">Старт</button>
-				<button id="restartButton" disabled>Рестарт</button>
-				<button id="settingsButton">Настройки</button>
-				<span id="levelDisplay">Уровень: 1</span>
-			</div>
-
-			<div id="settingsModal" class="modal">
-				<div class="modalContent">
-					<span class="close">&times;</span>
-					<h2>Настройки</h2>
-					<label for="gridWidth">Ширина поля:</label>
-					<input type="number" id="gridWidth" value="5" min="5" max="100" />
-					<br />
-					<label for="gridHeight">Высота поля:</label>
-					<input type="number" id="gridHeight" value="5" min="5" max="100" />
-					<br />
-					<label for="wallCount">Количество стен:</label>
-					<input type="number" id="wallCount" value="1" min="0" />
-					<br />
-					<button id="saveSettings">Сохранить</button>
+		<div class="weatherApp">
+			<h1>Приложение погоды</h1>
+			<div class="currentWeather">
+				<p class="location"></p>
+				<div class="currentWeatherInfo">
+					<p class="temperature"></p>
+					<p class="description"></p>
+					<p class="emoji"></p>
 				</div>
 			</div>
 
-			<div id="gameContainer"></div>
-		</main>
+			<h2>Прогноз на сегодня</h2>
+			<div class="todayForecast"></div>
+
+			<h2>Прогноз на следующие дни</h2>
+			<div class="forecast"></div>
+			<div class="controls">
+				<input
+					type="text"
+					id="cityInput"
+					placeholder="Введите название города"
+				/>
+				<button id="searchButton">Поиск</button>
+				<button id="toggleUnits">Переключить на °F</button>
+			</div>
+		</div>
 	</body>
 	<script src="./dist/bundle.js"></script>
 </html>

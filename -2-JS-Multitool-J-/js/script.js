@@ -1,2 +1,5 @@
 import '../scss/style.scss'
-import './labirint.js'
+import './fetchData.js'
+import './utils.js'
+import './uiHandler.js'
+

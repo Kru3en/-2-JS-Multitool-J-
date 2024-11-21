@@ -1,2 +1,2 @@
 import '../scss/style.scss'
-import './dateTiming.js'
+import './labirint.js'

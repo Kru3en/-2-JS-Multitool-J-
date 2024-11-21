@@ -1,194 +1,136 @@
-@use './nullstyle';
-
-$primary-color: #ff6f61;
-$secondary-color: #f7f7f7;
+$primary-color: #2e2e2e;
+$secondary-color: #6b6b6b;
+$accent-color: #c0a16b;
+$danger-color: #a52a2a;
+$success-color: #3a6b35;
 $font-family: 'Arial', sans-serif;
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
 
 body {
 	font-family: $font-family;
-	background-color: $secondary-color;
-	color: #333;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.container {
 	text-align: center;
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	width: 300px;
+	background-color: $primary-color;
+	color: #fff;
+}
+.contLabirint {
+	#controls {
+		margin-bottom: 20px;
 
-	header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		.cycle {
-			font-size: 18px;
-			font-weight: bold;
-			color: $primary-color;
-		}
-
-		h1 {
-			margin: 0 auto;
-			font-size: 24px;
-			color: $primary-color;
-		}
-	}
-
-	.timer {
-		margin: 20px 0;
-		font-size: 48px;
-		font-weight: bold;
-		color: #555;
-	}
-
-	.controls {
 		button {
-			background: $primary-color;
-			color: white;
+			margin: 0 5px;
+			background-color: $secondary-color;
+			color: #fff;
 			border: none;
-			padding: 10px 20px;
-			margin: 5px;
-			border-radius: 5px;
+			padding: 10px 15px;
 			cursor: pointer;
-			font-size: 16px;
-			transition: background 0.3s;
 
 			&:hover {
-				background: darken($primary-color, 10%);
+				background-color: darken($secondary-color, 10%);
 			}
+		}
 
-			&:disabled {
-				background: lighten($primary-color, 30%);
-				cursor: not-allowed;
-			}
+		#levelDisplay {
+			margin-left: 20px;
+			font-weight: bold;
+			color: $accent-color;
 		}
 	}
 
-	footer {
-		margin-top: 10px;
-		font-size: 14px;
-		color: #888;
+	#gameContainer {
+		display: inline-block;
+		border: 2px solid $secondary-color;
+		margin-top: 20px;
 	}
-}
 
-.modal {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	justify-content: center;
-	align-items: center;
-
-	&.active {
+	.row {
 		display: flex;
 	}
 
-	.modal-content {
-		background: white;
-		padding: 20px;
-		border-radius: 10px;
-		text-align: center;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	.cell {
+		width: 30px;
+		height: 30px;
+		border: 1px solid darken($secondary-color, 20%);
+		background-color: lighten($primary-color, 5%);
 
-		h3 {
-			margin-bottom: 10px;
+		&.wall {
+			background-color: $danger-color;
 		}
 
-		label {
-			display: block;
-			margin: 10px 0;
+		&.player {
+			background-color: $accent-color;
+			font-size: 24px;
+			line-height: 30px;
+			text-align: center;
+		}
+
+		&.finish {
+			background-color: $success-color;
+		}
+	}
+
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(46, 46, 46, 0.9);
+
+		.modalContent {
+			background-color: $secondary-color;
+			margin: 15% auto;
+			padding: 20px;
+			border: 1px solid $accent-color;
+			width: 300px;
+			color: #fff;
+
+			h2 {
+				color: $accent-color;
+			}
+
+			label {
+				display: inline-block;
+				width: 120px;
+				text-align: right;
+				margin-right: 10px;
+			}
 
 			input {
-				margin-left: 10px;
 				width: 50px;
-				text-align: center;
+				background-color: lighten($primary-color, 10%);
+				border: 1px solid $secondary-color;
+				color: #fff;
+				padding: 5px;
+			}
+
+			#saveSettings {
+				background-color: $accent-color;
+				color: #fff;
+				border: none;
+				padding: 10px 15px;
+				cursor: pointer;
+				margin-top: 10px;
+
+				&:hover {
+					background-color: darken($accent-color, 10%);
+				}
 			}
 		}
 
-		button {
-			margin: 10px 5px;
-			background: $primary-color;
-			color: white;
-			border: none;
-			padding: 10px 20px;
-			border-radius: 5px;
+		.close {
+			color: #fff;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
 			cursor: pointer;
 
-			&:hover {
-				background: darken($primary-color, 10%);
+			&:hover,
+			&:focus {
+				color: $accent-color;
+				text-decoration: none;
 			}
 		}
-		.auto-start {
-			margin-top: 20px;
-			display: flex;
-			align-items: center;
-			gap: 10px;
-	
-			label {
-					display: inline-block;
-					position: relative;
-					width: 60px;
-					height: 30px;
-					cursor: pointer;
-	
-					input[type="checkbox"] {
-							opacity: 0;
-							width: 0;
-							height: 0;
-	
-							&:checked ~ .switch {
-									background-color: #ff6f61;
-	
-									&:before {
-											transform: translateX(30px);
-									}
-							}
-					}
-	
-					.switch {
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							background-color: #ccc;
-							border-radius: 30px;
-							transition: background-color 0.3s;
-	
-							&:before {
-									content: '';
-									position: absolute;
-									width: 26px;
-									height: 26px;
-									background-color: white;
-									border-radius: 50%;
-									top: 2px;
-									left: 2px;
-									transition: transform 0.3s;
-							}
-					}
-			}
-	
-			span {
-					font-size: 14px;
-					color: #333;
-			}
-	}
-	
 	}
 }
